@@ -3,62 +3,63 @@
     <title>SERIEFLIX</title>
     <meta charset="UTF-8" />
     <body>
+    <?php
+        include_once 'Genero.php';
+        $fecha = new Genero();
+        $fecha->fechahora();
+
+        ?>
         <center><h1>SERIEFLIX, S.L</h1>
-        <h3>¡EMPIECE A CREAR SU EMPRESA!</h2>
+        <h3>¡EMPIECE A CREAR SU EMPRESA!</h3>
         <br />
                 <h2>SE LO HACEMOS TODO MÁS FÁCIL, LA ORGANIZACIÓN<br />
-                    DE SU EMPRESA AL ALCANCE DE SU TECLADO.</h1>
+                    DE SU EMPRESA AL ALCANCE DE SU TECLADO.</h2>
         <br/>
         <FONT SIZE=4>
         <form action='' method="post">
-            <table>
+            <table width=600 height=500>
                 <tr>
-                    <th align="left"><label>¿Quiere introducir un nuevo género?</label><br />
-                    <p><input type="submit" name="genero" value="Género" /></th></p>
+                    <th align="left"><label>¿Quiere introducir un nuevo género?</label><br /><br />
+                    <input type="submit" name="genero" value="Género" /></th>
                 </tr>
                 <tr>
-                    <th align="left"><label>¿Quiere introducir una nueva oficina?</label><br />
-                    <p><input type="submit" name="oficina" value="Oficina" /></th></p>
+                    <th align="left"><label>¿Quiere introducir una nueva oficina?</label><br /><br />
+                    <input type="submit" name="oficina" value="Oficina" /></th>
                  </tr>
                  <tr>
-                    <th align="left"><label>¿Desea introducir un trabajador a su empresa?</label><br />
-                    <p><input type="submit" name="trabajador" value="Trabajador" /></th></p>
+                    <th align="left"><label>¿Desea introducir un trabajador a su empresa?</label><br /><br />
+                    <input type="submit" name="trabajador" value="Trabajador" /></th>
                 </tr>
                 <tr>
-                    <th align="left"><label>¿Desea modificar un trabajador de la lista o bien desea eliminarlo?</label><br />
-                    <p><input type="submit" name="modificar" value="Modificar" />
-                    <input type="submit" name="eliminar" value="Eliminar" /></th></p>
+                    <th align="left"><label>¿Desea modificar un trabajador de la lista o bien desea eliminarlo?</label><br /><br />
+                    <input type="submit" name="modificar" value="Modificar" />
+                    <input type="submit" name="eliminar" value="Eliminar" /></th>
                  </tr>
                  <tr>
-                 <th align="left"><label>Puede buscar a los trabajadores registrados en su empresa según su género asignado:</label><br />
-                 <p><input type="submit" name="buscar" value="Buscar trabajador" /></th></p>
+                 <th align="left"><label>Puede buscar a los trabajadores registrados en su empresa según su género asignado:</label><br /><br />
+                 <input type="submit" name="buscar" value="Buscar trabajador" /></th>
                 </tr>
             <table>
         </center>
         </form>
         </FONT>
         <?php
-                 $genero = (isset($_POST['genero']))?$_POST['genero']:'';
-                 $oficina = (isset($_POST['oficina']))?$_POST['oficina']:'';
-                 $trabajador= (isset($_POST['trabajador']))?$_POST['trabajador']:'';
-                 $modificar= (isset($_POST['modificar']))?$_POST['modificar']:'';
-                 $eliminar= (isset($_POST['eliminar']))?$_POST['eliminar']:'';
-                 $buscar= (isset($_POST['buscar']))?$_POST['buscar']:'';
+                 
 
                 if (isset ($_POST['genero'])) {
                     header('Location:./insert_genero.php');
                 }
 
                 if (isset ($_POST['oficina'])) {
-                    # code...
+                    header('Location:./insert_oficina.php');
                 }
 
                 if (isset ($_POST['trabajador'])) {
-                    # code...
+                    header('Location:./insert_trabajador.php');
                 }
 
                 if (isset ($_POST['modificar'])) {
-                    # code...
+                    header('Location:./modificar_trabajador.php');
                 }
 
                 if (isset ($_POST['eliminar'])) {
@@ -66,7 +67,7 @@
                 }
 
                 if (isset ($_POST['buscar'])) {
-                    # code...
+                    header('Location:./buscar_trabajador.php');
                 }
         ?>
     </body>
