@@ -2,36 +2,37 @@
 
 include_once 'conexionBD.php';
 
-/*class Validador {
-   const CODIGO_GEN = 1000; 
-   public function __construct() {
-      //Constructor vacío.
-   }
-   public function comprobarAcceso($COD_GENERO){
-      if($COD_GENERO< self::CODIGO_GEN){
-         return false;
-      }else{
-         return true;
-      }
-   } 
-}*/
+
 
  class Genero { 
     private $COD_GENERO;
     private $genero;
     public $descripcion;
-    public function __construct($COD_GENERO, $genero, $descripcion) {
-       $this->COD_GENERO = $COD_GENERO;
-       $this->genero = $genero;
-       $this->descripcion = $descripcion;
-    }
-
-   public function get_COD_GENERO(){
+    
+    
+   
+   public function getCOD_GENERO(){
    return $this->COD_GENERO;
    }
-   public function get_genero(){
+   public function getGenero(){
    return $this->genero;
    }
+
+   public function getDescripcion(){
+   return $this->descripcion;
+   }
+
+   public function setCOD_GENERO($COD_GENERO) {
+      $this->COD_GENERO = $COD_GENERO;
+   }
+
+   public function setGenero($genero){
+   $this->genero = $genero;
+   }
+
+   public function setDescripcion($descripcion){
+      $this->descripcion = $descripcion;
+      }
 
     public function agregar(){
       try {
@@ -50,40 +51,10 @@ include_once 'conexionBD.php';
       }
    }
 
-   #mal cambiar con fetch class
- /*  public function buscar($genero){
-      try {
-         $con = (new Conexion())->Conectar();
-         $sql = $con->prepare("select * from genero where genero=:genero");
-         $sql->bindParam(":genero", $genero);
-         $sql->execute();
-         $res=$sql->fetch();
-         return $res;
-
-      } catch (PDOException $e) {
-         return $e->getMessage();
-      }
-   } */
-   public function buscar($genero){
-      try {
-         $con = (new Conexion())->Conectar();
-         $sql = $con->prepare("select * from genero where genero=:genero");
-         
-         
-         $sql->setFetchMode(PDO::FETCH_CLASS, 'Genero');
-         $busc_gen = $sql->fetch();
-         $busc_gen->buscar();
-         $sql->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Genero');
-         $busc_gen = $sql->fetch();
-         $busc_gen->buscar();
-
-      } catch (PDOException $e) {
-         return $e->getMessage();
-      }
+   public static function fechahora(){
+      echo date('l jS \of F Y h:i A');  
    }
-
-}
-
+ }
 
 
 ?>
