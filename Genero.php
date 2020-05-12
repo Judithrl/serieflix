@@ -2,14 +2,10 @@
 
 include_once 'conexionBD.php';
 
-
-
  class Genero { 
     private $COD_GENERO;
     private $genero;
     public $descripcion;
-    
-    
    
    public function getCOD_GENERO(){
    return $this->COD_GENERO;
