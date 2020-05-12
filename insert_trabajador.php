@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
-    <title>SERIEFLIX</title>
+    <head>
+        <title>SERIEFLIX</title>
         <meta charset="UTF-8" />
+    </head>
         <body>
             <center><h1>SERIEFLIX, S.L</h1>
             <h3>INTRODUZCA TRABAJADOR A LA EMPRESA</h2>
@@ -36,7 +38,7 @@
                     <tr>
                         <td align="left">
                             <label>Número de teléfono:</label>
-                            <input type="number" name="telefono" />
+                            <input type="number" name="telefono" required min=9/>
                         </td>
                     </tr>
                     <tr>
@@ -49,7 +51,7 @@
                                     $pwd = "2asir"; 
                                     $enlace = mysqli_connect($host, $user, $pwd); 
                                     mysqli_select_db($enlace, "serieflix");
-                                    $consulta = "SELECT genero FROM genero";
+                                    $consulta = "SELECT COD_GENERO FROM genero";
                                     
                                     $resultado=mysqli_query($enlace, $consulta);
                                     if (mysqli_num_rows($resultado)){
