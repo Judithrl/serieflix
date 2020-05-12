@@ -9,7 +9,7 @@
         <form action='' method="post">
             <FONT SIZE=4>
             <p>El género de las series que se quiere trabajar se ha guardado correctamente.<br />
-            ¿Quiere voler a la página principal?</p>
+            ¿Quiere volver a la página principal?</p>
             <br />
             <input type="submit" name="menu" value="Volver al menú" />
             </FONT>
