@@ -1,7 +1,6 @@
 <?php 
    include_once 'conexionBD.php';
   
-   
  class Trabajador { 
     private $COD_TRABAJADOR;
     private $dni;
@@ -10,7 +9,7 @@
     public $telefono;
     private $genero;
     private $oficina;
-   /* public function __construct($COD_TRABAJADOR, $dni, $nombreCompleto, $correo, $telefono, $genero, $oficina) {
+    public function __construct($COD_TRABAJADOR = '?', $dni = '?', $nombreCompleto = '?', $correo = '?', $telefono = '?', $genero= '?', $oficina = '?') {
        $this->COD_TRABAJADOR = $COD_TRABAJADOR;
        $this->dni = $dni;
        $this->nombreCompleto= $nombreCompleto;
@@ -18,7 +17,8 @@
        $this->telefono = $telefono;
        $this->genero = $genero;
        $this->oficina = $oficina;
-    } */
+        
+    } 
 
    public function getCOD_TRABAJADOR(){
    return $this->COD_TRABAJADOR;
@@ -85,10 +85,10 @@
       }
    }
 
-  /* public function modificar(){
+  public function modificar(){
       try {
-         $con =(new Conexion())->Conectar();
-         $sql = $con->prepare("update trabajador set nombreCompleto=:nombreCompleto, correo=:correo, telefono=:telefono, genero=:genero, oficina=:oficina where COD_TRABAJADOR=:COD_TRABAJADOR");
+         $con = (new Conexion())->Conectar();
+         $sql = $con->prepare("update trabajador set dni:=dni, nombreCompleto=:nombreCompleto, correo=:correo, telefono=:telefono, genero=:genero, oficina=:oficina, COD_TRABAJADOR=:COD_TRABAJADOR where COD_TRABAJADOR=:COD_TRABAJADOR");
          $sql->bindParam(":COD_TRABAJADOR", $this->COD_TRABAJADOR);
          $sql->bindParam(":dni", $this->dni);
          $sql->bindParam(":nombreCompleto", $this->nombreCompleto);
@@ -105,9 +105,9 @@
       } catch (PDOException $e) {
          return $e->getMessage();
       }
-   } */
+   } 
 
-  /* public function eliminar($COD_TRABAJADOR){
+   public function eliminar($COD_TRABAJADOR){
       try {
          $con = (new Conexion())->Conectar();
          $sql = $con->prepare("delete from trabajador where COD_TRABAJADOR=:COD_TRABAJADOR");
@@ -119,6 +119,63 @@
       } catch (PDOException $e) {
          return $e->getMessage();
       }
-   } */
+   } 
+  
+   public function listar(){
+      $con = (new Conexion())->Conectar(); 
+      $sql = $con->prepare("SELECT * FROM trabajador");
+      $sql->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Trabajador');
+      $sql->execute(); ?>
+      <table width=1050>
+            <thead>
+                  <tr>
+                     <th width=90 align="left">Código trabajador</th>
+                     <th width=100>DNI</th>
+                     <th width=230>Nombre completo</th>
+                     <th width=150>Correo</th>
+                     <th width=170>Teléfono</th>
+                     <th width=90>Género</th>
+                     <th width=110>Oficina</th>
+                     <th></th>
+                  </tr>
+            </thead>
+         </table> <?php
+      while ($objeto = $sql->fetch()){ ?>
+         <table width=1050>
+            <tbody> 
+            <tr>
+               <td width=100><?php echo $objeto->COD_TRABAJADOR ?></td>
+               <td width=140><?php echo $objeto->dni ?></td>
+               <td width=180><?php echo $objeto->nombreCompleto ?></td>
+               <td width=200><?php echo $objeto->correo ?></td>
+               <td width=140><?php echo $objeto->telefono ?></td>
+               <td width=100><?php echo $objeto->genero ?></td>
+               <td width=80><?php echo $objeto->oficina ?></td>
+               <td width=70 height=50>
+                     <button onclick="location.href='modificar_trabajador.php?&COD_TRABAJADOR=<?php echo $objeto->COD_TRABAJADOR ?>';">Modificar</button>
+                     <button onclick="eliminar('<?php echo $objeto->COD_TRABAJADOR ?>');">Eliminar</button>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   <?php
+         } 
+     } 
+
+     public function buscar($COD_TRABAJADOR){
+      try {
+         $con = (new Conexion())->Conectar();
+         $sql = $con->prepare("select * from trabajador where COD_TRABAJADOR=:COD_TRABAJADOR");
+         $sql->bindParam(":COD_TRABAJADOR", $COD_TRABAJADOR);
+         $sql->execute();
+         $res = $sql->fetch();
+         return $res;
+
+      } catch (PDOException $e) {
+         return $e->getMessage();
+      }
+   }
+
  }
+
 ?>
