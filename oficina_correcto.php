@@ -6,10 +6,10 @@
         <center><h1>SERIEFLIX, S.L</h1>
         <h3>¡EMPIECE A CREAR SU EMPRESA!</h3>
         <br />
-        <form action='' method="post">
+        <form action='./index.php' method="post">
             <FONT SIZE=4>
             <p>La nueva oficina se ha creado correctamente.<br />
-            ¿Quiere voler a la página principal?</p>
+            ¿Quiere volver a la página principal?</p>
             <br />
             <input type="submit" name="menu" value="Volver al menú" />
             </FONT>
