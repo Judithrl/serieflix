@@ -6,8 +6,8 @@
     <?php
         include_once 'Genero.php';
         $fecha = new Genero();
-        $fecha->fechahora();
-
+        $fecha->fechahora(); 
+ 
         ?>
         <center><h1>SERIEFLIX, S.L</h1>
         <h3>¡EMPIECE A CREAR SU EMPRESA!</h3>
@@ -30,14 +30,9 @@
                     <th align="left"><label>¿Desea introducir un trabajador a su empresa?</label><br /><br />
                     <input type="submit" name="trabajador" value="Trabajador" /></th>
                 </tr>
-                <tr>
-                    <th align="left"><label>¿Desea modificar un trabajador de la lista o bien desea eliminarlo?</label><br /><br />
-                    <input type="submit" name="modificar" value="Modificar" />
-                    <input type="submit" name="eliminar" value="Eliminar" /></th>
-                 </tr>
                  <tr>
-                 <th align="left"><label>Puede buscar a los trabajadores registrados en su empresa según su género asignado:</label><br /><br />
-                 <input type="submit" name="buscar" value="Buscar trabajador" /></th>
+                 <th align="left"><label>Puede ver la lista de sus trabajadores y a continuación eliminarlo o modificarlo:</label><br /><br />
+                 <input type="submit" name="buscar" value="Buscar" /></th>
                 </tr>
             <table>
         </center>
@@ -58,16 +53,8 @@
                     header('Location:./insert_trabajador.php');
                 }
 
-                if (isset ($_POST['modificar'])) {
-                    header('Location:./modificar_trabajador.php');
-                }
-
-                if (isset ($_POST['eliminar'])) {
-                    # code...
-                }
-
                 if (isset ($_POST['buscar'])) {
-                    header('Location:./buscar_trabajador.php');
+                    header('Location:./trabajador_buscado.php');
                 }
         ?>
     </body>
