@@ -6,14 +6,7 @@ private $COD_OFICINA;
 private $jefe;
 private $planta;
 private $numOficina;
-private $amueblado;
-/* public function __construct($COD_OFICINA, $jefe, $planta, $numOficina, $amueblado) {
-      $this->COD_OFICINA = $COD_OFICINA;
-      $this->jefe = $jefe;
-      $this->planta = $planta;
-      $this->numOficina = $numOficina;
-      $this->amueblado = $amueblado;
-   } */
+public $amueblado;
 
 public function getCOD_OFICINA(){
 return $this->COD_OFICINA;
@@ -63,8 +56,18 @@ public function setAmueblado($amueblado){
          $sql->bindParam(":jefe", $this->jefe);
          $sql->bindParam(":planta", $this->planta);
          $sql->bindParam(":numOficina", $this->numOficina);
-         $sql->bindParam(":amueblado", $this->amueblado);
-         $res = $sql->execute();
+         $sql->bindParam(":amueblado", $amueblado);
+         if(isset($_REQUEST['enviar']))
+         { 
+             if(isset( $_REQUEST['amueblado']))
+             {  
+                 $amueblado=implode(",",$_REQUEST["amueblado"]);
+             }
+             $res = $sql->execute();
+         } else {
+            $res = $sql->execute();
+         }
+         
          return $res;
 
       } catch (PDOException $e) {
