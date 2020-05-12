@@ -50,7 +50,7 @@ if (isset($_REQUEST["COD_TRABAJADOR"])) {
                     <tr>
                         <td align="left">
                             <label>Número de teléfono:</label>
-                            <input type="text" name="telefono" value="<?= $buscar["telefono"] ?>" min=9 />
+                            <input type="number" name="telefono" value="<?= $buscar["telefono"] ?>" min=9/>
                         </td>
                     </tr>
                     <tr>
