@@ -121,7 +121,7 @@
       }
    } 
   
-   public function listar(){
+   public static function listar(){
       $con = (new Conexion())->Conectar(); 
       $sql = $con->prepare("SELECT * FROM trabajador");
       $sql->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Trabajador');
