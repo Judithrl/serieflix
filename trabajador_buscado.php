@@ -13,7 +13,7 @@ require_once 'Trabajador.php';
             <FONT SIZE=4>
         
             <?php
-                $buscar = (new Trabajador())->listar(); ?>
+                $buscar = Trabajador::listar(); ?>
             <script>
                 function eliminar(COD_TRABAJADOR) {
                     var res = window.confirm("¿Está seguro de eliminar al trabajador : "+COD_TRABAJADOR+"?");
