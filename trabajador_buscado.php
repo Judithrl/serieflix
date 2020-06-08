@@ -25,12 +25,12 @@ require_once 'Trabajador.php';
 
             <p>¿Quiere volver a la página principal?</p>
             <br />
-            <form action='index.php' method="post">
+            <form action='' method="post">
                 <input type="submit" name="menu" value="Volver al menú" />
             
             <?php
               if (isset($_POST['menu'])) {
-                header('Location:./index.php');
+                header('Location:./inicio1.php');
               }  
             ?>
             </form>
