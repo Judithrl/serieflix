@@ -15,7 +15,7 @@
             </FONT>
             <?php
               if (isset($_POST['menu'])) {
-                header('Location:./index.php');
+                header('Location:./inicio1.php');
               }  
             ?>
         </form>
