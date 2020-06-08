@@ -6,7 +6,7 @@
         <center><h1>SERIEFLIX, S.L</h1>
         <h3>¡EMPIECE A CREAR SU EMPRESA!</h3>
         <br />
-        <form action='./index.php' method="post">
+        <form action='' method="post">
             <FONT SIZE=4>
             <p>La nueva oficina se ha creado correctamente.<br />
             ¿Quiere volver a la página principal?</p>
@@ -15,7 +15,7 @@
             </FONT>
             <?php
               if (isset($_POST['menu'])) {
-                header('Location:./index.php');
+                header('Location:./inicio1.php');
               }  
             ?>
         </form>
