@@ -44,16 +44,28 @@
                     <tr>
                         <td align="left">
                             <label>Género: </label>
+                           
                             <select name="genero" required>
                                 <?php
+                                  
                                     $host = "localhost"; 
                                     $user = "root"; 
                                     $pwd = "2asir"; 
                                     $enlace = mysqli_connect($host, $user, $pwd); 
                                     mysqli_select_db($enlace, "serieflix");
-                                    $consulta = "SELECT COD_GENERO FROM genero";
+                                    $consulta = "SELECT genero, COD_GENERO FROM genero";
                                     
                                     $resultado=mysqli_query($enlace, $consulta);
+                                    if (mysqli_num_rows($resultado)){
+                                        while($fila=mysqli_fetch_row($resultado)){ ?>
+                                            <option disabled value="<?php echo $fila[0]?><?php echo $fila[1]?>"><?php echo $fila[0]?>-<?php echo $fila[1]?> </option>
+                                <?php } 
+                                
+                                } 
+                                
+                                    $consulta2 = "SELECT COD_GENERO FROM genero";
+                        
+                                    $resultado=mysqli_query($enlace, $consulta2);
                                     if (mysqli_num_rows($resultado)){
                                         while($fila=mysqli_fetch_row($resultado)){ ?>
                                             <option value="<?php echo $fila[0]?>"><?php echo $fila[0]?> </option>
@@ -63,6 +75,7 @@
                                 mysqli_free_result($resultado);
                                 ?>
                             </select>
+                         
                         </td> 
                     </tr>
                     <tr>
