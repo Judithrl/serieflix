@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <?php 
-    require_once "inicio.php";
+    require_once "index.php";
     $admin=$_REQUEST['admin'];
             $constante = new Inicio(); 
                 if($constante->comprobarAcceso($admin)){
-                    header('Location:./index.php');
+                    header('Location:./inicio1.php');
                 }else{ ?>
 
                 <FONT SIZE=6>
